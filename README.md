@@ -1,0 +1,3 @@
+This is an idea that I had which I have been working on when I get a chance. The idea is that a game of tennis takes place, and the player is the 'mind' of one of the players. Depending on what happens in the rally, he would lose energy, confidence, gain confidence, and parts of his game would become stronger/weaker as the game progresses.
+
+I have built a rails app for it, with JavaScript on the front end. The score and attributes of each player, as well as the game logic and details of each rally will be kept on the back end, while the actions that the user takes to influence the outcome of the player are done in JavaScript and passed back via an Ajax request. The JavaScript library I am using to show the court and scoreboard is Raphael.js
