@@ -1,0 +1,276 @@
+
+</head>
+<body>
+<div id='arena'>
+<div></div>
+</div>
+<script>
+		// Creates canvas 
+var paper = Raphael(10, 50, 1000, 900);
+
+var court = paper.set();
+	court.push(
+		paper.rect(420, 50, 400, 550),
+		paper.image("assets/tennisnet.png", 400, 290, 440, 50),
+		paper.path("M480 50 V600"),
+		paper.path("M760 50 V600"),
+		paper.path("M480 175 H820"),
+		paper.path("M480 475 H820"),
+		paper.path("M620 175 V475"),
+		paper.path("M620 50 V57"),
+		paper.path("M620 593 V600")
+	);
+	court.attr("fill", "#49B3F0");
+	court.attr("stroke", "#fff");
+
+
+var player1 = paper.text(50, 10, "choose player")
+
+var quarters = paper.set();
+	quarters.push(
+		bottomRight = paper.rect(620, 338, 199, 261),
+		bottomLeft = paper.rect(420, 338, 199, 261),
+		topLeft = paper.rect(420, 50, 199, 261),
+		topRight = paper.rect(620, 50, 199, 261)
+		);
+
+quarters.attr({"stroke": "", "fill": "#fff", "opacity": 0});
+
+
+bottomRight.mouseover(function(event){
+	var serveFromTheBottomRight = paper.text(690, 630, "click to serve");
+		serveFromTheBottomRight.attr({ "font-size": 18, "font-family": "Roboto, sans-serif", "fill": "#D8F3F9"});	
+	serveFromTheBottomRight.click(function(event){
+		serveFromTheBottomRight.remove();
+		var serveStandBottomRight = paper.set();
+			serveStandBottomRight.push(	
+				ssbr1 = paper.circle(752, 605, 7),
+				ssbr2 = paper.circle(690, 605, 7),
+				ssbr3 = paper.circle(628, 605, 7)
+				);
+		serveStandBottomRight.attr("fill", "#3E586D");
+		quarters.remove();
+		serveStandBottomRight.click(function(event) {
+			var serveBallTopLeft = paper.set();
+				serveBallTopLeft.push(
+					sbtl1 = paper.circle(485, 180, 5),
+					sbtl2 = paper.circle(550, 180, 5),
+					sbtl3 = paper.circle(615, 180, 5)
+				);
+		serveBallTopLeft.attr("fill", "#C2FC5D");
+			serveBallTopLeft.mouseover(function(event) {
+				sbtl1.click(function(event) {
+					sbtl2.remove();
+					sbtl3.remove();
+				},
+				sbtl2.click(function(event) {
+					sbtl1.remove();
+					sbtl3.remove();
+				},
+				sbtl3.click(function(event) {
+					sbtl1.remove();
+					sbtl2.remove();
+				})));
+			});	
+		});
+			ssbr1.click(function(event) {
+				var serveSpot = paper.image("assets/now.png", 720, 560, 65, 50);
+				serveStandBottomRight.remove();	
+			},
+			ssbr2.click(function(event){
+				var serveSpot = paper.image("assets/now.png", 660, 560, 65, 50);
+				serveStandBottomRight.remove();
+			},
+			ssbr3.click(function(event) {
+				var serveSpot = paper.image("assets/now.png", 600, 560, 65, 50);
+				serveStandBottomRight.remove();
+			})));
+	});
+		bottomRight.mouseout(function(event){
+		serveFromTheBottomRight.attr("fill", "#8BA8B0");
+	});
+});
+
+
+
+bottomLeft.mouseover(function(event){
+	var serveFromTheBottomLeft = paper.text(540, 630, "click to serve");
+		serveFromTheBottomLeft.attr({ "font-size": 18, "font-family": "Roboto, sans-serif", "fill": "#D8F3F9"});
+	serveFromTheBottomLeft.click(function(event) {
+		serveFromTheBottomLeft.remove();
+		var serveStandBottomLeft = paper.set();
+		serveStandBottomLeft.push(
+			ssbl1 = paper.circle(488, 605, 7),
+			ssbl2 = paper.circle(550, 605, 7),
+			ssbl3 = paper.circle(612, 605, 7)
+			);
+		serveStandBottomLeft.attr("fill", "#B1D8F5");
+		quarters.remove();
+		serveStandBottomLeft.click(function(event) {
+		var serveBallTopRight = paper.set();
+		serveBallTopRight.push(
+			sbtr1 = paper.circle(625, 180, 5),
+			sbtr2 = paper.circle(690, 180, 5),
+			sbtr3 = paper.circle(755, 180, 5)
+			);
+		serveBallTopRight.attr("fill", "#C2FC5D");
+			serveBallTopRight.mouseover(function(event) {
+				sbtr1.click(function(event) {
+					sbtr2.remove();
+					sbtr3.remove();
+				},
+				sbtr2.click(function(event) {
+					sbtr1.remove();
+					sbtr3.remove();
+				},
+				sbtr3.click(function(event) {
+					sbtr1.remove();
+					sbtr2.remove();
+				})));
+			});	
+		}),
+			ssbl1.click(function(event) {
+				var serveSpot = paper.image("assets/now.png", 460, 560, 65, 50);
+				serveStandBottomLeft.remove();		
+		},
+			ssbl2.click(function(event){
+				var serveSpot = paper.image("assets/now.png", 520, 560, 65, 50);
+				serveStandBottomLeft.remove();
+		},
+			ssbl3.click(function(event) {
+				var serveSpot = paper.image("assets/now.png", 580, 560, 65, 50);
+				serveStandBottomLeft.remove();
+		})));
+	});
+		bottomLeft.mouseout(function(event){
+			serveFromTheBottomLeft.attr("fill", "#8BA8B0");
+		});
+});
+
+
+
+
+topLeft.mouseover(function(event){
+	var serveFromTheTopLeft = paper.text(540, 9, "click to serve");
+		serveFromTheTopLeft.attr({ "font-size": 18, "font-family": "Roboto, sans-serif", "fill": "#D8F3F9"});
+	serveFromTheTopLeft.click(function(event) {	
+		serveFromTheTopLeft.remove();
+		var serveStandTopLeft = paper.set();
+		serveStandTopLeft.push(
+			sstl1 = paper.circle(488, 45, 7),
+			sstl2 = paper.circle(550, 45, 7),
+			sstl3 = paper.circle(612, 45, 7)
+			);
+		serveStandTopLeft.attr("fill", "#3E586D");
+		quarters.remove();
+		serveStandTopLeft.click(function(event) {
+			var serveBallBottomRight = paper.set();
+			serveBallBottomRight.push(
+				sbbr1 = paper.circle(755, 470, 5),
+				sbbr2 = paper.circle(690, 470, 5),
+				sbbr3 = paper.circle(625, 470, 5)
+				);
+			serveBallBottomRight.attr("fill", "#C2FC5D");
+				serveBallBottomRight.mouseover(function(event) {
+					sbbr1.click(function(event) {
+						sbbr2.remove();
+						sbbr3.remove();
+				},
+				sbbr2.click(function(event) {
+					sbbr1.remove();
+					sbbr3.remove();
+				},
+				sbbr3.click(function(event) {
+					sbbr1.remove();
+					sbbr2.remove();
+				})));
+			});	
+		}),
+		sstl1.click(function(event) {
+			var serveSpot = paper.image("assets/now.png", 460, 7, 65, 50);
+			serveStandTopLeft.remove();
+		},
+		sstl2.click(function(event){
+			var serveSpot = paper.image("assets/now.png", 520, 7, 65, 50);
+			serveStandTopLeft.remove();
+		;	},
+		sstl3.click(function(event) {
+			var serveSpot = paper.image("assets/now.png", 580, 7, 65, 50);
+			serveStandTopLeft.remove();
+		})));
+	});
+	topLeft.mouseout(function(event){
+		serveFromTheTopLeft.attr("fill", "#8BA8B0");
+	});
+});
+
+topRight.mouseover(function(event){
+	var serveFromTheTopRight = paper.text(690, 9, "click to serve");
+		serveFromTheTopRight.attr({ "font-size": 18, "font-family": "Roboto, sans-serif", "fill": "#D8F3F9"});	
+	serveFromTheTopRight.click(function(event) {
+		serveFromTheTopRight.remove();
+		var serveStandTopRight = paper.set();
+		serveStandTopRight.push(
+			sstr1 = paper.circle(628, 45, 7),
+			sstr2 = paper.circle(690, 45, 7),
+			sstr3 = paper.circle(752, 45, 7)
+			);
+		serveStandTopRight.attr("fill", "#B1D8F5");
+		quarters.remove();
+		serveStandTopRight.click(function(event) {
+		var serveBallBottomLeft = paper.set();
+		serveBallBottomLeft.push(
+			sbbl1 = paper.circle(485, 470, 5),
+			sbbl2 = paper.circle(550, 470, 5),
+			sbbl3 = paper.circle(615, 470, 5)
+			);
+		serveBallBottomLeft.attr("fill", "#C2FC5D");
+				serveBallBottomLeft.mouseover(function(event) {
+					sbbl1.click(function(event) {
+						sbbl2.remove();
+						sbbl3.remove();
+				},
+				sbbl2.click(function(event) {
+					sbbl1.remove();
+					sbbl3.remove();
+				},
+				sbbl3.click(function(event) {
+					sbbl1.remove();
+					sbbl2.remove();
+				})));
+			});	
+		}),
+			sstr1.click(function(event) {
+			var serveSpot = paper.image("assets/now.png", 600, 7, 65, 50);
+			serveStandTopRight.remove();	
+		},
+		sstr2.click(function(event){
+		var serveSpot = paper.image("assets/now.png", 660, 7, 65, 50);
+		serveStandTopRight.remove();	
+		},
+		sstr3.click(function(event) {
+			var serveSpot = paper.image("assets/now.png", 720, 7, 65, 50);
+			serveStandTopRight.remove();	
+		})));
+	});
+	topRight.mouseout(function(event){
+		serveFromTheTopRight.attr("fill", "#8BA8B0");
+	});
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body><title></title>
+
+</html>

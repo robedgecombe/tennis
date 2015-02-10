@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   root 'matches#index'
 
-  resources :players
+  resources :matches, only: [:index, :new, :create, :show]
+  resources :players, only: [:index, :new, :create, :show]
+
+  get 'load_match' => "matches#load_match", as: :load_match
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

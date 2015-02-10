@@ -45,111 +45,123 @@ RSpec.describe Player, :type => :model do
       player4.increment_game_score
       expect(player4.game_score).to eq(40)
     end
-    player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
 
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
+# puts "huh"
+# puts player5.energy
+# puts "oh"
 
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-     player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
+player5.assign_mental_attributes
 
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
+# player5.assign_mental_attributes
+# puts "confidence is #{player5.confidence}"
+# puts "concentration is #{player5.concentration}"
+# puts "intelligence is #{player5.intelligence}"
 
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    player5.serve
-    puts player5.game_score
-    puts player5.opponent_game_score
-    puts "and your energy is.... #{player5.energy}"
+    # player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    #  player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # player5.serve
+    # puts player5.game_score
+    # puts player5.opponent_game_score
+    # puts "and your energy is.... #{player5.energy}"
   
 	end
 end

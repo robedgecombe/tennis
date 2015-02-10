@@ -1,7 +1,75 @@
 class Player < ActiveRecord::Base
 	
 	belongs_to :match
-	validates :name, :energy, presence: true
+	validates :name, :match_id, :energy, presence: true
+
+	after_create :assign_mental_attributes
+
+	# def echo
+ #    print "enter something: "
+ #    STDOUT.flush
+ #    response = gets.chomp
+ #    puts "#{response}"
+ #  end
+
+ 	# def get_selection
+ 	# 	selection = gets.chomp
+ 	# end
+
+	def assign_mental_attributes
+		mental_attributes = ["A. Confidence", "B. Concentration", "C. Intelligence"]
+		array = ["A", "B", "C"]
+		shuffled = array.shuffle
+		choices = []
+		while mental_attributes.length > 0
+			puts "which attribute do you choose. put the letter down"
+			puts "you have a choice of #{mental_attributes.join(", ")}"
+			puts "you have chosen the following: so far.... #{choices}.... awesome eh?"
+			selection = shuffled[0]
+			shuffled.delete_at(0)
+			choices.push(selection)
+			puts "oh oosh, you chose #{selection}"
+			puts "therefore you have now chosen...#{choices} so far"
+			puts "this is the current array #{shuffled}"
+			if selection == 'A' || selection == 'a' && mental_attributes.include?("A. Confidence")
+				mental_attributes.delete("A. Confidence")
+				puts "your current choices are #{choices}"
+			elsif selection == 'B' || selection == 'b' && mental_attributes.include?("B. Concentration")
+				mental_attributes.delete("B. Concentration")
+				puts "your current choices are #{choices}"
+			elsif selection == 'C' || selection == 'c' && mental_attributes.include?("C. Intelligence")
+				mental_attributes.delete("C. Intelligence")
+				puts "your current choices are #{choices}"
+			else puts "just the letter. put the letter down and nothing else"
+				mental_attributes
+			end
+		end
+			if choices[0] == 'A'
+				self.confidence = 60
+			elsif  choices[1] == 'A'
+				self.confidence = 40
+			elsif choices[2] == 'A'
+				self.confidence = 20
+			end
+			if choices[0] == 'B'
+				self.concentration = 60
+			elsif choices[1] == 'B'
+				self.concentration = 40
+			elsif choices[2] == 'B'
+				self.concentration = 20
+			end
+			if choices[0] == 'C'
+				self.intelligence = 60
+			elsif choices[1] == 'C'
+				self.intelligence = 40
+			elsif choices[2] = 'C'
+				self.intelligence = 20
+			end							
+		puts "your choices were....... #{choices.join(", ")}"
+		puts "your confidence is.....#{confidence}"
+		puts "your concentration is....#{concentration}"
+		puts "your intelligence is....#{intelligence}"
+	end
 
 
 	def serve

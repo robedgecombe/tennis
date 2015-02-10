@@ -1,7 +1,8 @@
 class CreatePlayers < ActiveRecord::Migration
   def change
     create_table :players do |t|
-      t.string :name
+      t.string  :name
+      t.integer :match_id
       t.integer :energy, default: 200
       t.integer :game_score, default: 0
       t.integer :set_score, default: 0
@@ -13,7 +14,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :advantage_receiver_points, default: 0
       t.integer :confidence
       t.integer :concentration
-      t.integer :intellegence
+      t.integer :intelligence
       t.integer :power
       t.integer :speed
       t.integer :backhand
