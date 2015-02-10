@@ -9,10 +9,17 @@ RSpec.describe Match, :type => :model do
   	expect(big_match.score).to eq(0)
   end
 
-  it "goes up 15 when the player serves" do
-  	player1.serve
-  	expect(big_match.score).to eq(15)
   end
 
+  it "has a player" do
+    new_match = Match.create
+    expect(new_match.players.name).to eq("Jim")
   end
+  another_match = Match.create
+  puts "yep ah yep this is"
+  puts another_match.id
+    puts "yeah man"
+    you_are = Player.find(match_id)
+    puts you_are
+    puts "awesome"
 end
