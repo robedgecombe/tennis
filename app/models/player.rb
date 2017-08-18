@@ -1,20 +1,36 @@
 class Player < ActiveRecord::Base
+	extend OrderAsSpecified
 	
-	belongs_to :match
-	validates :name, :match_id, :energy, presence: true
+	# belongs_to :match
+	has_many :matches_as_player_1, class_name: 'Match', foreign_key: 'player_1_id'
+	has_many :matches_as_player_2, class_name: 'Match', foreign_key: 'player_2_id'
+	validates :name, :energy, presence: true
 
-	after_create :assign_mental_attributes
+	# after_create :assign_mental_attributes
+	validate :skills_ranked_correctly
 
-	# def echo
- #    print "enter something: "
- #    STDOUT.flush
- #    response = gets.chomp
- #    puts "#{response}"
- #  end
+	# SKILLS_RANKING = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] # need to get return back in
+	SKILLS = ["power", "speed", "intelligence", "confidence", "concentration", "accuracy", "first_serve", "second_serve", "backhand", "drop_shot", "net_ability", "return"]
+	SKILLS_RANKING = (1..12).to_a
 
- 	# def get_selection
- 	# 	selection = gets.chomp
- 	# end
+
+	def matches
+		# matches_as_player_1 + matches_as_player_2
+		Match.where('player_1_id = :id or player_2_id = :id', id: id)
+	end
+
+
+	def skills_ranked_correctly
+		initial_skills_ranking = [confidence, concentration, intelligence, power, speed, backhand, accuracy, net_ability, drop_shot, first_serve, second_serve, self.return]
+		unless initial_skills_ranking.sort.eql?(SKILLS_RANKING)
+			self.errors[:skills_ranking] = "Skills not ranked correctly"
+		end
+	end
+
+	def update_stats_after_complete_match
+		# binding.pry
+		puts 'update those bad boys'
+	end
 
 	def assign_mental_attributes
 		mental_attributes = ["A. Confidence", "B. Concentration", "C. Intelligence"]
@@ -72,37 +88,37 @@ class Player < ActiveRecord::Base
 	end
 
 
-	def serve
-		self.energy -= 1
-		is_it_in = rand(4)
-		if is_it_in == 0
-			puts "what a serve"
-			opponent_attempts_to_return_awesome_shot
-		elsif is_it_in == 1 || is_it_in == 2
-			puts "fault"
-			second_serve
-		elsif is_it_in == 3
-			puts "serve is good"
-			opponent_returns_ok_serve
-		end			
-	end
+	# def serve
+	# 	self.energy -= 1
+	# 	is_it_in = rand(4)
+	# 	if is_it_in == 0
+	# 		puts "what a serve"
+	# 		opponent_attempts_to_return_awesome_shot
+	# 	elsif is_it_in == 1 || is_it_in == 2
+	# 		puts "fault"
+	# 		second_serve
+	# 	elsif is_it_in == 3
+	# 		puts "serve is good"
+	# 		opponent_returns_ok_serve
+	# 	end			
+	# end
 
-	def second_serve
-		is_it_in = rand(4)
-		if is_it_in == 0
-			puts "good serve"
-			opponent_returns_ok_serve
-		elsif is_it_in == 1
-			is_it_in == 1
-			puts "oh that is a really good serve"
-			opponent_attempts_to_return_awesome_shot
-		elsif is_it_in == 2
-			puts "you can't hit it there"
-			opponent_now_has_upper_hand
-		else puts "double fault"
-			increment_opponent_game_score
-		end
-	end
+	# def second_serve
+	# 	is_it_in = rand(4)
+	# 	if is_it_in == 0
+	# 		puts "good serve"
+	# 		opponent_returns_ok_serve
+	# 	elsif is_it_in == 1
+	# 		is_it_in == 1
+	# 		puts "oh that is a really good serve"
+	# 		opponent_attempts_to_return_awesome_shot
+	# 	elsif is_it_in == 2
+	# 		puts "you can't hit it there"
+	# 		opponent_now_has_upper_hand
+	# 	else puts "double fault"
+	# 		increment_opponent_game_score
+	# 	end
+	# end
 
 	def hit_it_back
 		hit_it = rand(4)
@@ -278,8 +294,6 @@ class Player < ActiveRecord::Base
 		self.advantage_receiver_points = 0
 		puts "new game"
 	end
-
-
 
 end
 

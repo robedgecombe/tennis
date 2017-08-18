@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Player, :type => :model do
+RSpec.describe Player, type: :model do
   describe "#initialize" do
     player1 = Player.create({name: 'Bill'})
     player2 = Player.create({name: 'George', energy: nil})

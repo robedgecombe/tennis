@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'matches#index'
 
   resources :matches, only: [:index, :new, :create, :show]
-  resources :players, only: [:index, :new, :create, :show]
+  resources :players
 
   get 'load_match' => "matches#load_match", as: :load_match
   # The priority is based upon order of creation: first created -> highest priority.

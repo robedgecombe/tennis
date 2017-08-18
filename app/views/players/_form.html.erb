@@ -1,0 +1,14 @@
+<h1>Player Details</h1>
+
+
+<%= semantic_form_for @player do |f| %>
+	<% f.inputs do %>
+		<%= f.input :name, as: :string, html_options: { maxlength: 20 } %>
+	  <% skills = order_skills_for_new_player %>
+		<% 12.times do %>
+			<%= f.input skills.pop, as: :select, collection: Player::SKILLS_RANKING %>
+		<% end %>
+		<%= f.action :submit, as: :button %>
+		<%= f.action :cancel, as: :link %>
+	<% end %>
+<% end %>

@@ -1,0 +1,6 @@
+<h1>players yeah</h1>
+<% @players.each do |player| %>
+	<li><%= link_to player.name, edit_player_path(player) %></li>
+<% end %>
+<br>
+<%= link_to "Create new player", action: :new %>

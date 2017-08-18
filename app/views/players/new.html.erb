@@ -1,0 +1,7 @@
+<% if @player.errors.any? %>
+	"Sorry, there are errors on the page:"<%= @player.errors.messages.values.each{ |x| puts x.first } %>
+<% end %>
+
+<h1>New Player</h1>
+
+<%= render "form" %>
